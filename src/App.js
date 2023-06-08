@@ -7,8 +7,8 @@ import { kitties } from './kitties'
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <h1> Hello Kittyfriends!</h1>
+      <div className='tc'>
+        <p className="main-header">Kittyfriends</p>
         <CardList kitties={kitties} />
       </div>
     )
