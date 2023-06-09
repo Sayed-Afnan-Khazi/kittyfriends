@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
-import CardList from './CardList'
-import SearchBox from './SearchBox'
+import CardList from '../components/CardList'
+import SearchBox from '../components/SearchBox'
 import 'tachyons';
 
 class App extends React.Component {
