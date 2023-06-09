@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import CardList from '../components/CardList'
 import SearchBox from '../components/SearchBox'
+import Scroll from '../components/Scroll'
 import 'tachyons';
 
 class App extends React.Component {
@@ -34,7 +35,9 @@ class App extends React.Component {
       <div className='tc'>
         <p className="main-header">Kittyfriends</p>
         <SearchBox searchChangeFunction={this.onSearchChange}/>
-        <CardList kitties={filteredKitties} />
+        <Scroll>
+          <CardList kitties={filteredKitties} />
+        </Scroll>
       </div>
     )
   }
