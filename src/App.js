@@ -3,15 +3,20 @@ import React from 'react';
 import CardList from './CardList'
 import SearchBox from './SearchBox'
 import 'tachyons';
-import { kitties } from './kitties'
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      kitties:kitties,
+      kitties:[],
       searchfield:''
     }
+  }
+
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response=> response.json())
+      .then(kitties=> this.setState({kitties:kitties}));
   }
 
   onSearchChange = (event) => {
@@ -20,6 +25,11 @@ class App extends React.Component {
 
   render() {
     const filteredKitties = this.state.kitties.filter(kitty => kitty.name.toLowerCase().includes(this.state.searchfield.toLowerCase()));
+    if (this.state.kitties.length === 0) {
+      return (
+        <p className=" tc loading-title">Your Kittyfriends are loading in!</p>
+      )
+    }
     return (
       <div className='tc'>
         <p className="main-header">Kittyfriends</p>
